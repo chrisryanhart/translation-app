@@ -36,7 +36,8 @@ const useStyles = makeStyles({
 // Breed family
 
 
-export default function DogCard({details}) {
+
+export default function TranslatedDogCard({details}) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   
@@ -46,30 +47,30 @@ export default function DogCard({details}) {
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Featured Dog
+          Perro destacado
         </Typography>
         <Typography variant="h5" component="h2">
-          Name: {details.name}
+          Nombre: {details.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Strengths: {details.bred_for}
+          Fortalezas: {details.bred_for}
           <br/>
-          Breed Family: {details.breed_group}
+          Familia de Raza: {details.breed_group}
         </Typography>
         <Typography variant="body2" component="p">
-          Personality: {details.temperament}
+          Personalidad: {details.temperament}
           <br/>
-          Weight: {details.weight.metric}
+          Peso: {details.weight.metric}
           <br/>
-          Height: {details.height.metric}
+          Altura: {details.height.metric}
           <br/>
-          Life Span: {details.life_span}
+          Esperanza de Vida: {details.life_span}
           <br/>
-          Origin: {details.origin}
+          Origen: {details.origin}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Get New Dog</Button>
+        <Button size="small">Encontra Perro Nuevo</Button>
       </CardActions>
     </Card>
   );

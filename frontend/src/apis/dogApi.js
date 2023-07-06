@@ -57,9 +57,9 @@ import axios from "axios";
 
 const baseDogUrl = 'https://api.thedogapi.com/v1';
 
-async function getDog(data){
+export async function getDog(data){
   try{
-    let res = await axios.get(`${baseDogUrl}/breeds/${data.dogId}`)
+    let res = await axios.get(`${baseDogUrl}/breeds/${data}`);
 
     return res;
   } catch(error){

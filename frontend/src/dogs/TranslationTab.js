@@ -7,6 +7,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import DogCard from './DogCard';
+import TranslatedDogCard from './TranslatedDogCard';
+import { getDog } from '../apis/dogApi';
  
 
 function TabPanel(props) {
@@ -57,21 +59,36 @@ export default function TranslationTabs() {
     setValue(newValue);
   };
 
-  const [dog, setDog] = useState({});
+  const INITIAL_STATE = {
+      "name": "",
+      "bred_for": "",
+      "breed_group":"",
+      "temperament": "",
+      "weight":"",
+      "height":"",
+      "origin":"",
+      "life_span":""
+  }
+
+  const [dog, setDog] = useState(INITIAL_STATE);
+
 
   // call dog api after the page loads
 
-  // useEffect(function fetchDog(){
-  //   async function callDogApi(){
+  useEffect(function fetchDog(){
+    async function callDogApi(id){
       
-  //     let res = await 
-  //   }
+      let res = await getDog(id);
+      // const {name, bred_for, breed_group, temperament, }
+      setDog({...dog, ...res.data});
+    }
 
-  // });
+    callDogApi(1);
 
+  },[]);
 
-  // extract the dog logic and pass into dog component
-
+  // extract the dog data and pass into dog component
+  let arr = [];
 
   return (
     <div className={classes.root}>
@@ -83,10 +100,11 @@ export default function TranslationTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <DogCard/>
+        <DogCard details={dog} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {/* Show alternate content here */}
+        <TranslatedDogCard details={dog}/>
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three
