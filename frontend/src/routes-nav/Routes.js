@@ -5,6 +5,7 @@ import TranslationTabs from "../dogs/TranslationTab";
 // import BasicContainer from "../containers/BasicContainer";
 import Home from "../homepage/Home";
 import LanguageSelection from "../preferences/LanguageSelection";
+import PageNotFound from "../errors/PageNotFound";
 
 
 
@@ -24,6 +25,9 @@ function Routes(){
                 <Route exact path="/preferences">
                     <LanguageSelection/>
                 </Route>
+                <Route exact path="/pageNotFound">
+                    <PageNotFound/>
+                </Route>
                 {/* <Route exact path="/login">
                     <LoginFormCard/>
                 </Route>
@@ -32,6 +36,8 @@ function Routes(){
                     <ProfileCard/>
                 </Route>
                 <Redirect to="/"/> */}
+                <Redirect to='/pageNotFound'/>
+                
             </Switch>
         </div>
     );
