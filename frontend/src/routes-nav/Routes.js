@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import TranslationTabs from "../dogs/TranslationTab";
 // import BasicContainer from "../containers/BasicContainer";
 import Home from "../homepage/Home";
+import LanguageSelection from "../preferences/LanguageSelection";
 
 
 
@@ -19,6 +20,9 @@ function Routes(){
                 </Route>
                 <Route exact path="/dogs">
                     <TranslationTabs/>
+                </Route>
+                <Route exact path="/preferences">
+                    <LanguageSelection/>
                 </Route>
                 {/* <Route exact path="/login">
                     <LoginFormCard/>

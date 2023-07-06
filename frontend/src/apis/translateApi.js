@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 // https://translate.terraprint.co/translate
 // {
 // 	"q": "name: African Hunting Dog. Badger, otter hunting. Terrier. 10 - 13 years. Outgoing, Friendly, Alert, Confident, Intelligent, Courageous",
@@ -17,11 +18,17 @@ import axios from "axios";
 // "reference_image_id": "1-7cgoZSh"
 // }
 
-const baseTranslateUrl = 'https://translate.terraprint.co/translate';
 
-async function translateText(data){
+
+const baseTranslateUrl = 'https://translate.terraprint.co';
+
+export async function translateText(text, language){
   try{
-    let res = await axios.post(`${baseTranslateUrl}/translate`,data = {text: data.text});
+
+    const data = {"q": text, "source": "en", "target":`${language}`};
+    const headers = {'Content-Type': 'application/json'};
+
+    let res = await axios.post(`${baseTranslateUrl}/translate`,data, {headers: headers});
     return res;
   } catch(error){
     

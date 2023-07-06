@@ -43,33 +43,33 @@ export default function DogCard({details}) {
 
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+    <Card id='DogCard' className={classes.root} component={'div'}>
+      <CardContent id='DogCardContent' component={'div'}>
+        <Typography component={'span'} className={classes.title} color="textSecondary" gutterBottom>
           Featured Dog
         </Typography>
         <Typography variant="h5" component="h2">
-          Name: {details.name}
+          Name: {details.dog.name}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Strengths: {details.bred_for}
+        <Typography component={'span'} className={classes.pos} color="textSecondary">
+          Strengths: {details.dog.bred_for}
           <br/>
-          Breed Family: {details.breed_group}
+          Breed Family: {details.dog.breed_group}
         </Typography>
-        <Typography variant="body2" component="p">
-          Personality: {details.temperament}
+        <Typography variant="body2" component="span">
+          Personality: {details.dog.temperament}
           <br/>
-          Weight: {details.weight.metric}
+          Weight: {details.dog.weight.metric}
           <br/>
-          Height: {details.height.metric}
+          Height: {details.dog.height.metric}
+          {/* <br/>
+          Life Span: {details.dog.life_span} */}
           <br/>
-          Life Span: {details.life_span}
-          <br/>
-          Origin: {details.origin}
+          Origin: {details.dog.origin}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Get New Dog</Button>
+        <Button size="small"><Link to="/">Find New Dog</Link> </Button>
       </CardActions>
     </Card>
   );

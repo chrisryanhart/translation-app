@@ -6,14 +6,21 @@ import NavBar from './routes-nav/NavBar';
 import BasicContainer from './containers/BasicContainer';
 
 
+
 function App() {
 
-  const test = 'this is a test'
+  const [language,setLanguage] = useState('es');
+
+  const updateLanguage = (newLanguage) => {
+
+    setLanguage(newLanguage);
+  }
+
 
   return (
     <div className="App">
       <BrowserRouter>
-        <CountContext.Provider value={test}>
+        <CountContext.Provider value={{language, updateLanguage}}>
           <NavBar/>
           <BasicContainer/>
           {/* <Routes/> */}

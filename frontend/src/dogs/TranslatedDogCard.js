@@ -44,34 +44,34 @@ export default function TranslatedDogCard({details}) {
 
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Perro destacado
-        </Typography>
-        <Typography variant="h5" component="h2">
-          Nombre: {details.name}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Fortalezas: {details.bred_for}
-          <br/>
-          Familia de Raza: {details.breed_group}
-        </Typography>
-        <Typography variant="body2" component="p">
-          Personalidad: {details.temperament}
-          <br/>
-          Peso: {details.weight.metric}
-          <br/>
-          Altura: {details.height.metric}
-          <br/>
-          Esperanza de Vida: {details.life_span}
-          <br/>
-          Origen: {details.origin}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Encontra Perro Nuevo</Button>
-      </CardActions>
-    </Card>
+    <Card className={classes.root} component={'div'} id='Card'>
+        {details.translatedText.length && <CardContent component={'div'} id='CardConent'>
+          
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            {details.translatedText[1]}
+          </Typography>
+          <Typography variant="h5" component="h2">
+          {details.translatedText[0]}: {details.translatedText[9]}
+          </Typography>
+          <Typography className={classes.pos} color="textSecondary">
+          {details.translatedText[2]}: {details.translatedText[10]}
+            <br/>
+            {details.translatedText[3]}: {details.translatedText[11]}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {details.translatedText[4]}: {details.translatedText[12]}
+            <br/>
+            {details.translatedText[5]}: {details.translatedText[13]}
+            <br/>
+            {details.translatedText[6]}: {details.translatedText[14]}
+            <br/>
+            {details.translatedText[7]}:  {details.translatedText[15]}
+          </Typography>
+        </CardContent>}
+        <CardActions>
+          <Button size="small"><Link to='/'>{details.translatedText[8]}</Link></Button>
+        </CardActions>
+      </Card>
+
   );
 }
