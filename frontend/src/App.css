@@ -1,6 +1,10 @@
 
 
-body {
+/* body {
     background-color: beige;
-}
+} */
 
+.home{
+    display: flex;
+    width: 50vw;
+}
