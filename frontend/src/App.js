@@ -23,10 +23,7 @@ function App() {
         <CountContext.Provider value={{language, updateLanguage}}>
           <NavBar/>
           <BasicContainer/>
-          {/* <Routes/> */}
-          {/* <NewContainer/> */}
         </CountContext.Provider>
-
       </BrowserRouter>
     </div>
   );

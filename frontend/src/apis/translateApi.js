@@ -20,7 +20,7 @@ import axios from "axios";
 
 
 
-const baseTranslateUrl = 'https://translate.terraprint.co';
+const baseTranslateUrl = 'https://translate.terraprint.cojhlkajhSFLKa';
 
 export async function translateText(text, language){
   try{

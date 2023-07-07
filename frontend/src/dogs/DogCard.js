@@ -57,6 +57,7 @@ export default function DogCard({details}) {
           Breed Family: {details.dog.breed_group}
         </Typography>
         <Typography variant="body2" component="span">
+          <br/>
           Personality: {details.dog.temperament}
           <br/>
           Weight: {details.dog.weight.metric}

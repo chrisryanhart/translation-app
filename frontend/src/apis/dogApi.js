@@ -59,7 +59,11 @@ const baseDogUrl = 'https://api.thedogapi.com/v1';
 
 export async function getDog(data){
   try{
-    let res = await axios.get(`${baseDogUrl}/breeds/${data}`);
+    let res = await axios.get(`${baseDogUrl}/breeds/${data}dfsdf`);
+
+    if(res.isAxiosError){
+      throw new Error('BadRequest Error 400: Server unable to process request');
+    }
 
     return res;
   } catch(error){

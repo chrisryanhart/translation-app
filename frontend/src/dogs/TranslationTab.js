@@ -12,6 +12,7 @@ import TranslatedDogCard from './TranslatedDogCard';
 import { getDog } from '../apis/dogApi';
 import { translateText } from '../apis/translateApi';
 import CountContext from "../UserContext";
+import {Link} from 'react-router-dom';
 
  
 
@@ -78,16 +79,28 @@ export default function TranslationTabs() {
 
   const [dog, setDog] = useState(INITIAL_STATE);
   const [translatedText, setTranslatedText] = useState([]);
-
+  const [hasError, sethasError] = useState(false);
+  const [errorMessage,setErrorMessage] = useState('Heres my error');
 
   // call dog api after the page loads
 
   useEffect(function fetchDog(){
     async function callDogApi(id){
-      
-      let res = await getDog(id);
-      // const {name, bred_for, breed_group, temperament, }
-      setDog({...dog, ...res.data});
+
+      try{
+        let res = await getDog(id);
+        // const {name, bred_for, breed_group, temperament, }
+        if(res.isAxiosError){
+          throw new Error('BadRequest Error 400: Server unable to process request');
+        }
+        setDog({...dog, ...res.data});
+
+      }catch(error){
+        sethasError(true);
+        console.log(error.message);
+        setErrorMessage(error.message);
+      }
+
     }
 
     callDogApi(1);
@@ -98,25 +111,29 @@ export default function TranslationTabs() {
   // call translate api
   const getTranslation = async () => {
     
+    try{
+      // format input text
+      const keys = 'name. featured dog. strengths. breed family. personality. weight. height. origin. find new dog. ';
+      const dogInfoText = `${dog.name.toLowerCase()}. ${dog.bred_for.toLowerCase()}. ${dog.breed_group.toLowerCase()}. ${dog.temperament.toLowerCase()}. ${dog.weight.metric.toLowerCase()} kilograms. ${dog.height.metric.toLowerCase()} centimeters. ${dog.life_span.toLowerCase()}. ${dog.origin.toLowerCase()}.`;
 
-    // format input text
-    const keys = 'name. featured dog. strengths. breed family. personality. weight. height. origin. find new dog. ';
-    const dogInfoText = `${dog.name.toLowerCase()}. ${dog.bred_for.toLowerCase()}. ${dog.breed_group.toLowerCase()}. ${dog.temperament.toLowerCase()}. ${dog.weight.metric.toLowerCase()} kilograms. ${dog.height.metric.toLowerCase()} centimeters. ${dog.life_span.toLowerCase()}. ${dog.origin.toLowerCase()}.`;
+      // call api
+      // erro with keysRes
 
-    // call api
-    // erro with keysRes
+      let keysRes = await translateText(keys, language);
+      let dogInfoRes = await translateText(dogInfoText, language);
 
+      const combinedRes = keysRes.data.translatedText + dogInfoRes.data.translatedText;
 
-    let keysRes = await translateText(keys, language);
-    let dogInfoRes = await translateText(dogInfoText, language);
+      // format output text
+      let translationOutput = combinedRes.split('.');
 
-    const combinedRes = keysRes.data.translatedText + dogInfoRes.data.translatedText;
+      // setTranslation
+      setTranslatedText([...translationOutput]);
+    }catch(error){
 
-    // format output text
-    let translationOutput = combinedRes.split('.');
-
-    // setTranslation
-    setTranslatedText([...translationOutput]);
+      sethasError(true);
+      setErrorMessage('BadRequest Status 400: Server unable to process request');
+    }
   }
 
   const findNewDog = () => {
@@ -127,8 +144,24 @@ export default function TranslationTabs() {
   
   // pass translate text into 
 
-  // only call translate api if there is no translation
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
+  // only call translate api if there is no translation
+  if(hasError){
+    return (
+      <div>
+        <div style={{width: '300px',backgroundColor:'red', padding: '5px'}}>
+          {errorMessage}
+        </div>
+        <button onClick={refreshPage}>Try Again</button>
+
+      </div>
+
+    )
+
+  }else{
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -146,9 +179,6 @@ export default function TranslationTabs() {
         {/* Show alternate content here */}
         <TranslatedDogCard details={{translatedText,findNewDog}}/>
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel> */}
     </div>
-  );
-}
+  )};
+};
