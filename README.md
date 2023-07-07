@@ -4,7 +4,7 @@
 
 **Overview:**
 
-The Translation App retrieves and translates basic information about a dog. The user can select to translate to 3 major languages.
+The Translation App retrieves and translates basic information about a dog. The user can select to translate to 2 major languages.
 
 - **User Flow Diagram:**
   ![db schema model](User_Flow.png?raw=true 'database_schema')
