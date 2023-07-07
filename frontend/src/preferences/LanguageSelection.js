@@ -26,16 +26,6 @@ const useStyles = makeStyles({
   },
 });
 
-// My characteristics
-//   "name": "Afghan Hound",
-//   "weight": " 50 to 60 pounds",
-//   "height": "25 to 27 inches at the shoulder",
-//   "life_span": "10 to 13 years",
-// "origin": "Germany, France",
-// "temperament": "Tenacious, Keen, Energetic, Responsive, Alert, Intelligent",
-// Bred for
-// Breed family
-
 
 export default function LanguageSelection({}) {
   const classes = useStyles();
@@ -51,8 +41,6 @@ export default function LanguageSelection({}) {
     updateLanguage(e.target.value);
   }
 
-  // onClick={setLanguage}
-  // onClick={handleClick}
 
   return (
     <form>
@@ -60,20 +48,8 @@ export default function LanguageSelection({}) {
       <select  name='language-select' id='language-select' value={language} onChange={handleUpdate}>
         <option value="es">Spanish</option>
         <option value="de">German</option>
-        <option value="fr">French</option>
       </select>
       <button><Link to='/'>Update Language</Link></button>
     </form >
-    // <Card id='DogCard' className={classes.root} component={'div'}>
-    //   <CardContent id='DogCardContent' component={'div'}>
-    //     <Typography component={'span'} className={classes.title} color="textSecondary" gutterBottom>
-    //       Translate to a New Language:
-    //     </Typography>
-
-    //   </CardContent>
-    //   <CardActions>
-    //     <Button size="small"><Link to="/">Find New Dog</Link> </Button>
-    //   </CardActions>
-    // </Card>
   );
 }
