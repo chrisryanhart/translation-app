@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// NavBar component imported from MUI
 export default function NavBar() {
   const classes = useStyles();
 
@@ -38,6 +39,7 @@ export default function NavBar() {
     setAnchorEl(null);
   };
 
+  // Render dropdown menu so users can navigate to /preferences route
   return (
     <div className={classes.root}>
       <AppBar position="static">

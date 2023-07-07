@@ -1,27 +1,18 @@
 import axios from "axios";
 
-
-// https://translate.terraprint.co/translate
-// {
+// Sample post request:
+// Url https://translate.terraprint.co/translate with below data
+// data = {
 // 	"q": "name: African Hunting Dog. Badger, otter hunting. Terrier. 10 - 13 years. Outgoing, Friendly, Alert, Confident, Intelligent, Courageous",
 // 	"source":"en",
 // 	"target":"es"
 // }
-// {
-// "id": 4,
-// "name": "Airedale Terrier",
-// "bred_for": "Badger, otter hunting",
-// "breed_group": "Terrier",
-// "life_span": "10 - 13 years",
-// "temperament": "Outgoing, Friendly, Alert, Confident, Intelligent, Courageous",
-// "origin": "United Kingdom, England",
-// "reference_image_id": "1-7cgoZSh"
-// }
+
+const baseTranslateUrl = 'https://translate.terraprint.co';
 
 
-
-const baseTranslateUrl = 'https://translate.terraprint.cojhlkajhSFLKa';
-
+// Call external translate api
+// error is returned through the try block
 export async function translateText(text, language){
   try{
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -6,7 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import Card from '@material-ui/core/Card';
+
 
 const useStyles = makeStyles({
   root: {
@@ -25,24 +25,14 @@ const useStyles = makeStyles({
   },
 });
 
-// My characteristics
-//   "name": "Afghan Hound",
-//   "weight": " 50 to 60 pounds",
-//   "height": "25 to 27 inches at the shoulder",
-//   "life_span": "10 to 13 years",
-// "origin": "Germany, France",
-// "temperament": "Tenacious, Keen, Energetic, Responsive, Alert, Intelligent",
-// Bred for
-// Breed family
 
-
-
+// Card Component integrated from MUI
 export default function TranslatedDogCard({details}) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   
 
-
+  // Return card with dynamic translatedText state variable
   return (
     <Card className={classes.root} component={'div'} id='Card'>
         {details.translatedText.length && <CardContent component={'div'} id='CardConent'>

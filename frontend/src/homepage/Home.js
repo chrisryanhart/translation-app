@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 export default function Home(){
 
+    // Welcomes user to the app
     return(
         <div style={{ margin: 'auto'}}>
             <div style={{paddingTop:'50px',justifyContent:'center',alignContent:'center', textAlign:'center'}}>

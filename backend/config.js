@@ -1,6 +1,6 @@
 "use strict";
 
-require("dotenv").config();
+// require("dotenv").config();
 
 const SECRET_KEY = process.env.SECRET_KEY || "secret";
 

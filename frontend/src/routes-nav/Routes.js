@@ -11,12 +11,12 @@ import PageNotFound from "../errors/PageNotFound";
 
 function Routes(){
 
+    // Visit the path specified in the url via react-router
+    // If path not found, redirect to the 404 not found path
     return (
         <div>
             <Switch>
                 <Route exact path="/">
-                    {/* <Home/> */}
-                    {/* <BasicContainer/> */}
                     <Home/>
                 </Route>
                 <Route exact path="/dogs">
@@ -28,14 +28,7 @@ function Routes(){
                 <Route exact path="/pageNotFound">
                     <PageNotFound/>
                 </Route>
-                {/* <Route exact path="/login">
-                    <LoginFormCard/>
-                </Route>
 
-                <Route exact path="/users/:id">
-                    <ProfileCard/>
-                </Route>
-                <Redirect to="/"/> */}
                 <Redirect to='/pageNotFound'/>
                 
             </Switch>
