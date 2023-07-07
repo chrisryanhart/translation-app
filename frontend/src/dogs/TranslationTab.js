@@ -122,24 +122,35 @@ export default function TranslationTabs() {
     
     try{
       // format input text
-      const keys = 'name. featured dog. strengths. breed family. personality. weight. height. origin. find new dog. ';
+      const keys = '. name. featured dog. strengths. breed family. personality. weight. height. origin. find new dog.';
       
       // make all data lowercase to prevent errors with translate api
       // the api is sensitive and causes errors if not lowercase
-      const dogInfoText = `${dog.name.toLowerCase()}. ${dog.bred_for.toLowerCase()}. ${dog.breed_group.toLowerCase()}. ${dog.temperament.toLowerCase()}. ${dog.weight.metric.toLowerCase()} kilograms. ${dog.height.metric.toLowerCase()} centimeters. ${dog.life_span.toLowerCase()}. ${dog.origin.toLowerCase()}.`;
-
+      const dogInfoText = `. ${dog.name.toLowerCase()}. ${dog.bred_for.toLowerCase()}. ${dog.breed_group.toLowerCase()}. ${dog.temperament.toLowerCase()}. ${dog.weight.metric.toLowerCase()} kilograms. ${dog.height.metric.toLowerCase()} centimeters. ${dog.life_span.toLowerCase()}. ${dog.origin.toLowerCase()}.`;
       // create 2 api calls to comply with api limit rules
       let keysRes = await translateText(keys, language);
       let dogInfoRes = await translateText(dogInfoText, language);
 
       // combine the text data
-      const combinedRes = keysRes.data.translatedText + dogInfoRes.data.translatedText;
+      const combinedRes = keysRes.data.translatedText + ' ' + dogInfoRes.data.translatedText;
 
       // format output text into an array
       let translationOutput = combinedRes.split('.');
 
+      // capitalize first letter of output strings
+      const capitalizedFirstChars = translationOutput.map((ele) => {
+        if(ele){
+          return (
+            ele[1].toUpperCase() + ele.slice(2)
+          );
+        }
+      });
+
+      capitalizedFirstChars.pop();
+      capitalizedFirstChars.shift();
+
       // update the translated text for the translationComponent
-      setTranslatedText([...translationOutput]);
+      setTranslatedText([...capitalizedFirstChars]);
     }catch(error){
 
       // handle any errors from the api call

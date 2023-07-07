@@ -31,7 +31,40 @@ export default function TranslatedDogCard({details}) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   
-
+  // 0:
+  // 'Nombre'
+  // 1:
+  // 'Perro destacado'
+  // 2:
+  // 'Fortalezas'
+  // 3:
+  // 'Raza familia'
+  // 4:
+  // 'Personalidad'
+  // 5:
+  // 'Peso'
+  // 6:
+  // 'Altura'
+  // 7:
+  // 'Origen'
+  // 8:
+  // 'Encontrar nuevo perro'
+  // 9:
+  // 'Ffenpinscher'
+  // 10:
+  // 'Pequeña caza roedor, lapdog'
+  // 11:
+  // 'Juguete'
+  // 12:
+  // 'Terco, curioso, juguetón, aventurero, activo, amante de la diversión'
+  // 13:
+  // '3 - 6 kilogramos'
+  // 14:
+  // '23 - 29 centímetros'
+  // 15:
+  // '10 - 12 años'
+  // 16:
+  // 'Alemania, Francia'
   // Return card with dynamic translatedText state variable
   return (
     <Card className={classes.root} component={'div'} id='Card'>
